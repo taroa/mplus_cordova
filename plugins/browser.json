@@ -7,14 +7,17 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-facebook4": {
+            "APP_ID": "1999359246955973",
+            "APP_NAME": "MPlus",
+            "PACKAGE_NAME": "com.mplus.reader"
+        },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.example.hello"
+            "PACKAGE_NAME": "com.mplus.reader"
         },
-        "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "com.example.hello"
-        },
-        "cordova-plugin-spinner-dialog": {
-            "PACKAGE_NAME": "com.example.hello"
+        "phonegap-plugin-push": {
+            "SENDER_ID": "AIzaSyARkNn1U5U8mxHI1nr7hibj7FxG3wqd3Xw",
+            "PACKAGE_NAME": "com.mplus.reader"
         }
     },
     "dependent_plugins": {}

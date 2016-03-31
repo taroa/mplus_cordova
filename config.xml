@@ -21,6 +21,7 @@
         <access origin="http://www.mplus.com.tw" subdomains="true" />
         <config-file parent="/*" target="config.xml">
         </config-file>
+    	<preference name="android-minSdkVersion" value="15"/>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
