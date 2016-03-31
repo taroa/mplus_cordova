@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.mplus.reader" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>MPlus</name>
+    <description>
+	    MPlus云閱讀
+    </description>
+    <author email="roatoa@gmail.com" href="http://www.mplus.com.tw">
+	    mplus reader beta
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" version="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <access origin="http://www.mplus.com.tw" subdomains="true" />
+        <config-file parent="/*" target="config.xml">
+        </config-file>
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <plugin name="phonegap-plugin-push" spec="https://github.com/phonegap/phonegap-plugin-push">
+        <variable name="SENDER_ID" value="AIzaSyARkNn1U5U8mxHI1nr7hibj7FxG3wqd3Xw" />
+    </plugin>
+    <plugin name="cordova-plugin-facebook4" spec="~1.7.0">
+        <variable name="APP_ID" value="1999359246955973" />
+        <variable name="APP_NAME" value="MPlus" />
+    </plugin>
+</widget>
