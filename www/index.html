@@ -102,25 +102,54 @@
     .slideout-open .slideout-menu {
       display: block;
     }
+    .slide_ontop{
+      z-index: :99;
+      height:80%;
+      position: absolute;
+      top:100px;
+      left:0px;
+      width:50px;
+      display: block;
+    }
+    .app{
+      border-left-style: dotted;
+      border-left-color: #ccc;
+      border-left-width: 1px;
+    }
+    .menutitle{
+      font-family: sans-serif;
+      font-size: 16pt;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+      color: #444;
+      border-bottom: #ccc 1px dotted;
+      border-bottom-right-radius: 30px
+    }
 	</style>
   </head>
 
   <body>
     <nav id="menu">
-      <h2>Menu</h2>
+      <div>
+      <section class='menutitle'>
+      最近閱讀
+      </section>
+      </div>
     </nav>
 
     <main id="panel">
       <header>
-        <button class="toggle-button">☰</button>
-        <h2>Panel</h2>
+        <!--<button class="toggle-button">☰</button>-->
+        <!--<h2>Panel</h2>-->
       </header>
       <div class="div" id="fb-root" style="display:none"></div>
-      <div class="app div" >
+      <div class="app div" style='background-color:white'>
         <iframe frameborder=0 id=content src="https://www.mplus.com.tw/?from_mobile"></iframe>
         <div class="loading div" style="background-color:white">
         </div>
       </div>
+      <div class="slide_ontop"><div>
     </main>
 
      <script src="js/slideout.min.js"></script>
@@ -131,11 +160,39 @@
          'padding': 256,
          'tolerance': 70
        });
-
-       // Toggle button
-       document.querySelector('.toggle-button').addEventListener('click', function() {
-         slideout.toggle();
+       slideout.on('open',function(){
+         $(".slide_ontop").width('100%');
        });
+       slideout.on('close',function(){
+         $(".slide_ontop").width('50px');
+       });
+       function receiveMessage(event)
+       {
+          if(! event.origin.match(/www\.mplus\.com\.tw/)){
+            return;
+          }
+          var data = JSON.parse(event.data);
+          var db = openDatabase('mplusdb', '1.0', 'reading_log', 2 * 1024 * 1024);
+          db.transaction(function (tx) {
+             tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id INTEGER PRIMARY KEY, log)');
+             tx.executeSql('insert into logs values (NULL,"'+data[1]+'")');
+          });
+
+          console.log(event);
+      }
+      window.addEventListener("message", receiveMessage, false);
+      var db = openDatabase('mplusdb', '1.0', 'reading_log', 2 * 1024 * 1024);
+      db.transaction(function (tx) {
+         tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id INTEGER PRIMARY KEY, log)');
+      });
+       // Listen to message from child window
+       //eventer(messageEvent,function(e) {
+         //alert('parent received message!:  ',e.data);
+       //},false);
+       // Toggle button
+       //document.querySelector('.toggle-button').addEventListener('click', function() {
+      //   slideout.toggle();
+       //});
      </script>
 </body>
 </html>

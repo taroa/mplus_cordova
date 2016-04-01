@@ -19,7 +19,11 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-      showLogo();
+      if(window.location.search.match(/debug/)){
+        $(".loading").remove();
+      }else{
+        showLogo();
+      }
 //        var parentElement = document.getElementById(id);
 //        var listeningElement = parentElement.querySelector('.listening');
 //        var receivedElement = parentElement.querySelector('.received');
@@ -45,6 +49,8 @@ var app = {
 		//window.plugins.spinnerDialog.hide();
     window._iframe_loaded = true;
 	});
+
+
 //	window.plugins.spinnerDialog.show("MPlus","loading...");
 //window.sum(2, 3, function(result) { alert("Result:" + result); }, function(err) { alert(err); });
 //	cordova.exec(function(success){},function(err){alert(err);},"MyToast","showToast",["it works"]);
@@ -88,11 +94,13 @@ var fbLoginSuccess = function (userData) {
   console.log("UserInfo: ", userData);
   facebookConnectPlugin.getAccessToken(function(token) {
         //alert("Token: " + token);
+
           fadeoutLogo(
             function(){
               var _id = setInterval(function(){
                 if(window._iframe_loaded){
                   $(".loading").remove();
+                  //$(".slide_ontop").css('z-index',99);
                   clearInterval(_id);
                 }
               },500);
