@@ -1,15 +1,15 @@
 # mplus_cordova
 
-first install cordova, then add platforms under mplus_cordova directory:
+first install cordova, then add platforms under mplus_cordova directory:   
 
-$ corodva platform add browser
-$ corodva platform add android
-$ corodva platform add ios
+$ corodva platform add browser   
+$ corodva platform add android   
+$ corodva platform add ios   
 
-to build and running:
+to build and running:   
 
-$ cordova run android
-...and so on...
+$ cordova run android   
+...and so on...   
 
 
 basically nothing in this repository modified the original responsive design, just applied it into an iframe and try to mimic a slideout menu,
